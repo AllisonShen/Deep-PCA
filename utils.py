@@ -121,8 +121,10 @@ def show_three_dataset():
                         's' + str(face_id), str(test_id) + '.pgm') 
                 Display_images_as_subplots(path_to_img_original,path_to_img_compressed,path_to_img_restore)
 def PSNR(original_path, compressed_path):
-    original = cv2.imread(original_path)
-    compressed = cv2.imread(compressed_path, 1)
+    # original = cv2.imread(original_path)
+    # compressed = cv2.imread(compressed_path, 1)
+    original = np.load(original_path)
+    compressed = np.load(compressed_path)
     mse = np.mean((original - compressed) ** 2)
     if(mse == 0):  # MSE is zero means no noise is present in the signal .
                   # Therefore PSNR have no importance.
